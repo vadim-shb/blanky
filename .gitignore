@@ -15,3 +15,14 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+
+#IntelliJ IDEA specific
+/.idea
+/*.iml
+
+#Client deploy specific
+client/devApp
+client/node_modules
+client/bower_components
+client/productionApp
+client/src/main/lib/*
