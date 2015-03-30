@@ -25,4 +25,4 @@ client/devApp
 client/node_modules
 client/bower_components
 client/productionApp
-client/src/main/lib/*
+client/src/lib/*
