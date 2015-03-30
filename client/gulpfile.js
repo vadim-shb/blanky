@@ -119,10 +119,8 @@ gulp.task('production.index2pack', function() {
         .pipe(gulp.dest('productionApp'));
 });
 
-gulp.task('production.clean', function() {
-    del.sync('productionApp/*');
-    var emptyStream = gulp.src([]).pipe(gulp.dest('/'));
-    return emptyStream;
+gulp.task('production.clean', function(callback) {
+    del('productionApp/*', callback);
 });
 
 gulp.task('production', gulp.series('production.clean', gulp.parallel('production.libs2pack', 'production.js2pack', 'production.css2pack'), 'production.index2pack'));
