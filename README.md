@@ -20,4 +20,4 @@ Template of basic application on top of
    - node_modules
    - productionApp
    - src/lib
- 4. Install Karma-plugin. Create Karma configuration for start with *"karma.conf.js"* config file
+ 4. Install Karma-plugin. Create Karma configuration for start with *"karma.conf.js"* - config file
