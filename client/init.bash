@@ -4,6 +4,7 @@
 #sudo npm install -g gulp
 #sudo npm install -g jasmine
 #sudo npm install -g karma-cli
+###sudo npm install -g istanbul
 
 bower install
 npm install
