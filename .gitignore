@@ -17,8 +17,8 @@ project/plugins/project/
 .worksheet
 
 #IntelliJ IDEA specific
-/.idea
-/*.iml
+**/.idea
+**/*.iml
 
 #Client deploy specific
 client/devApp
