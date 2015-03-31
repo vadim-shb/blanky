@@ -8,4 +8,5 @@
 
 bower install
 npm install
+gulp production
 gulp dev
