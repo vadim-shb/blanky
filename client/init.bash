@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 #sudo aptitude install nodejs
 #sudo npm install -g bower
 ###sudo npm install -g gulp ## old version for now
