@@ -23,6 +23,7 @@ project/plugins/project/
 #Client deploy specific
 client/devApp
 client/node_modules
+client/coverage
 client/bower_components
 client/productionApp
 client/src/lib/*
