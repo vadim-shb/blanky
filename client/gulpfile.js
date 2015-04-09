@@ -119,8 +119,13 @@ gulp.task('dev.sources2index', function() {
     return fillIndex(sources, 'src')
 });
 
-gulp.task('dev.reload', gulp.series('dev.sources2index', browserSync.reload));
+gulp.task('dev.browserSync.reload', gulp.series('dev.sources2index', browserSync.reload));
 
+gulp.task('dev.watch', function() {
+    gulp.watch('src/**/*', ['dev.browserSync.reload']);
+    gulp.watch('bower_components/**/*', [gulp.series('dev.libs2sources', 'dev.browserSync.reload')]);
+});
+    
 gulp.task('dev.browserSync.start', function() {
     browserSync({
         server: {
@@ -133,8 +138,6 @@ gulp.task('dev.browserSync.start', function() {
         },
         browser: 'google-chrome-stable'
     });
-    gulp.watch('src/**/*', 'dev.reload');
-    gulp.watch('bower_components/**/*', gulp.series('dev.libs2sources', 'dev.reload'));
 });
 
 gulp.task('dev.startTestEnvironment', function() {
@@ -154,7 +157,7 @@ gulp.task('dev.startTestEnvironment', function() {
         });
 });
 
-gulp.task('dev', gulp.series('dev.libs2sources', 'dev.sources2index', gulp.parallel('dev.browserSync.start', 'dev.startTestEnvironment')));
+gulp.task('dev', gulp.series('dev.libs2sources', 'dev.sources2index', gulp.parallel('dev.browserSync.start', 'dev.startTestEnvironment', 'dev.watch')));
 
 //==================================== production environment ===================================
 

@@ -1,6 +1,6 @@
 package blanky
 
-object Main extends App {
+object ServerStarter extends App {
 
   println("====== nothing ======")
 }

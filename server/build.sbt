@@ -4,13 +4,21 @@ version := "0.0-SNAPSHOT"
 
 scalaVersion := "2.11.6"
 
-val akkaVersion = "2.3.9"
-val scalaTestVersion = "2.2.4"
-val slf4jVersion = "1.7.5"
-val scalaShortVersion = "2.11"
 
-libraryDependencies ++= Seq(
-  "com.typesafe.akka" % s"akka-actor_$scalaShortVersion" % akkaVersion,
-  "com.typesafe.akka" % s"akka-testkit_$scalaShortVersion" % akkaVersion,
-  "org.scalatest" % s"scalatest_$scalaShortVersion" % scalaTestVersion
-)
+libraryDependencies ++= {
+  val scV = "2.11"
+  val akkaV = "2.3.9"
+  val sprayV = "1.3.3"
+  val sprayJsonV = "1.3.3"
+  val scalaTestV = "2.2.4"
+  val slf4jV = "1.7.5"
+
+  Seq(
+    "com.typesafe.akka" % s"akka-actor_$scV" % akkaV,
+    "com.typesafe.akka" % s"akka-testkit_$scV" % akkaV,
+    "io.spray" % s"spray-can_$scV" % sprayV,
+    "io.spray" % s"spray-routing_$scV" % sprayV,
+    "io.spray" % s"spray-json_$scV" % sprayJsonV,
+    "org.scalatest" % s"scalatest_$scV" % scalaTestV
+  )
+}
