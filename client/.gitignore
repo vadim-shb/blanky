@@ -1,0 +1,12 @@
+*.log
+
+#IntelliJ IDEA specific
+**/.idea
+**/*.iml
+
+#Client deploy specific
+bower_components
+coverage
+node_modules
+productionApp
+src/lib/*
