@@ -11,12 +11,9 @@ import scala.concurrent.duration._
 object ServerStarter extends App {
 
   implicit val system = ActorSystem("app-system")
-
-  val apiService = system.actorOf(Props[ApiServiceActor], "api-service")
-
   implicit val timeout = Timeout(10.seconds)
 
+  val apiService = system.actorOf(Props[ApiServiceActor], "api-service")
   IO(Http) ? Http.Bind(apiService, interface = "localhost", port = 8085)
-
   println("======== server started ========")
 }
