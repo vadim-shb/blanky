@@ -1,18 +1,22 @@
 package blanky
 
-import akka.actor.ActorSystem
-import blanky.routings.{CurrentUser, SignIn}
-import spray.routing.SimpleRoutingApp
+import akka.actor.{ActorSystem, Props}
+import akka.io.IO
+import akka.pattern.ask
+import akka.util.Timeout
+import spray.can.Http
 
-object ServerStarter extends App with SimpleRoutingApp {
+import scala.concurrent.duration._
+
+object ServerStarter extends App {
 
   implicit val system = ActorSystem("app-system")
 
-  startServer(interface = "localhost", port = 8085) {
-    pathPrefix("api") {
-      CurrentUser.routing ~
-        SignIn.routing
-    }
-  }
+  val apiService = system.actorOf(Props[ApiServiceActor], "api-service")
 
+  implicit val timeout = Timeout(10.seconds)
+
+  IO(Http) ? Http.Bind(apiService, interface = "localhost", port = 8085)
+
+  println("======== server started ========")
 }
