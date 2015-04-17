@@ -42,7 +42,8 @@ var devConfig = {
         'bower_components/bootstrap/dist/js/bootstrap.js'
     ],
     bowerCss: [
-        'bower_components/bootstrap/dist/css/bootstrap.css'
+        'bower_components/bootstrap/dist/css/bootstrap.css',
+        'bower_components/bootstrap/dist/css/bootstrap.css.map'
     ],
     libJs: [
         'src/lib/jquery.js',
@@ -64,7 +65,8 @@ var productionConfig = {
         'bower_components/bootstrap/dist/js/bootstrap.min.js'
     ],
     bowerCss: [
-        'bower_components/bootstrap/dist/css/bootstrap.min.css'
+        'bower_components/bootstrap/dist/css/bootstrap.min.css',
+        'bower_components/bootstrap/dist/css/bootstrap.css.map'
     ],
     libJs: [
         'productionApp/lib/jquery.min.js',
@@ -129,14 +131,19 @@ gulp.task('dev.watch', function() {
 gulp.task('dev.browserSync.start', function() {
     browserSync({
         server: {
-            baseDir: './src/'
+            baseDir: './src/',
+            middleware: function(req, res, next) {
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                next();
+            }
         },
         port: 9090,
         https: false,
         ui: {
             port: 9091
         },
-        browser: 'google-chrome-stable'
+        //browser: 'google-chrome-stable'
+        browser: 'firefox'
     });
 });
 

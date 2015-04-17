@@ -1,18 +1,25 @@
 package blanky
 
-import akka.actor.Actor
-import blanky.routings.{CurrentUser, SignIn}
+import akka.actor.{Actor, Props}
+import blanky.actors.SignUpActor
+import blanky.dao.UserSecurityDao
+import blanky.routes.SignUpNewUserRouter
+import blanky.utils.CorsSupport
 import spray.routing.HttpService
 
-class ApiServiceActor extends Actor with HttpService {
+class ApiServiceActor extends Actor with HttpService with CorsSupport {
 
   def actorRefFactory = context
 
-  def receive = runRoute(
-    pathPrefix("api") {
-      CurrentUser.routing ~
-        SignIn.routing
-    }
-  )
+  val signUpActor = context.actorOf(Props(classOf[SignUpActor], new UserSecurityDao))
+  val signUpNewUserRouter = new SignUpNewUserRouter(signUpActor).routing
+
+  def receive = {
+    runRoute(pathPrefix("api") {
+      cors {
+        signUpNewUserRouter
+      }
+    })
+  }
 
 }

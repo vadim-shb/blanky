@@ -16,4 +16,5 @@ object ServerStarter extends App {
   val apiService = system.actorOf(Props[ApiServiceActor], "api-service")
   IO(Http) ? Http.Bind(apiService, interface = "localhost", port = 8085)
   println("======== server started ========")
+
 }
