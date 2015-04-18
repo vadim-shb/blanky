@@ -5,7 +5,7 @@ import blanky.utils.DbConnected
 import org.scalatest._
 import scalikejdbc._
 
-class UserSecurityDaoTest extends WordSpec with MustMatchers with DbConnected //with AutoRollback {
+class UserSecurityDaoTest extends WordSpec with MustMatchers with DbConnected /*with AutoRollback*/ {
 
   val userDao = new UserSecurityDao
 
