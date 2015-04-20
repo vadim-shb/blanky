@@ -1,8 +1,10 @@
 package blanky.routes
 
+import akka.actor.ActorRef
+import akka.testkit.TestActor.AutoPilot
+import akka.testkit.{TestActor, TestProbe}
 import blanky.AppJsonProtocol._
 import blanky.domain.{SignUpUserDto, User}
-import blanky.test_utils.ActorStub._
 import org.scalatest.{MustMatchers, WordSpec}
 import spray.httpx.SprayJsonSupport._
 import spray.json._
@@ -17,13 +19,20 @@ class SignUpNewUserRouterTest extends WordSpec with MustMatchers with ScalatestR
 
       // AND signUpActor will response with id of saved user
       val createdUserId = 12L
-      val signUpActorStub = stub()
-      signUpActorStub.answer(userDto, createdUserId)
-
-      // AND router to test
-      val underTest = new SignUpNewUserRouter(signUpActorStub.ref).routing
+      val signUpActorStub = TestProbe()
+      signUpActorStub.setAutoPilot(new AutoPilot {
+        override def run(sender: ActorRef, msg: Any): AutoPilot = {
+          msg match {
+            case `userDto` =>
+              sender ! createdUserId
+              TestActor.NoAutoPilot
+          }
+        }
+      })
 
       // WHEN router receives post-request with user dto
+      val underTest = new SignUpNewUserRouter(signUpActorStub.ref).routing
+
       Post("/sign-up", userDto) ~> underTest ~> check {
 
         // THEN router sends user dto to signUpActor
