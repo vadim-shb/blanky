@@ -2,7 +2,7 @@ package blanky.routes
 
 import blanky.AppJsonProtocol._
 import blanky.domain.{SignUpUserDto, User}
-import blanky.test_utils.ActorStub
+import blanky.test_utils.ActorStub._
 import org.scalatest.{MustMatchers, WordSpec}
 import spray.httpx.SprayJsonSupport._
 import spray.json._
@@ -17,8 +17,8 @@ class SignUpNewUserRouterTest extends WordSpec with MustMatchers with ScalatestR
 
       // AND signUpActor will response with id of saved user
       val createdUserId = 12L
-      val signUpActorStub = ActorStub.stub()
-      signUpActorStub.sendBack(createdUserId)
+      val signUpActorStub = stub()
+      signUpActorStub.answer(userDto, createdUserId)
 
       // AND router to test
       val underTest = new SignUpNewUserRouter(signUpActorStub.ref).routing
