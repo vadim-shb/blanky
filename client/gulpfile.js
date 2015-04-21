@@ -106,7 +106,6 @@ function fillIndex(sources, destination) {
 }
 
 //==================================== developer environment ====================================
-
 gulp.task('dev.libs2sources', function() {
     var bowerSources = devConfig.bowerJs.concat(devConfig.bowerCss);
     return bower2lib(bowerSources, devConfig.libFolder);
@@ -124,8 +123,8 @@ gulp.task('dev.sources2index', function() {
 gulp.task('dev.browserSync.reload', gulp.series('dev.sources2index', browserSync.reload));
 
 gulp.task('dev.watch', function() {
-    gulp.watch('src/**/*', ['dev.browserSync.reload']);
-    gulp.watch('bower_components/**/*', [gulp.series('dev.libs2sources', 'dev.browserSync.reload')]);
+    gulp.watch('src/**/*', gulp.series('dev.browserSync.reload'));
+    gulp.watch('bower_components/**/*', gulp.series('dev.libs2sources', 'dev.browserSync.reload'));
 });
     
 gulp.task('dev.browserSync.start', function() {
