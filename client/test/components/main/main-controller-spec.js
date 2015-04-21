@@ -1,15 +1,17 @@
 describe('main-controller-spec', function() {
     //var $rootScope;
-    var $controllers, $httpBackend, $http;
+    var controller, $httpBackend, $http, $scope;
     beforeEach(module('webClient'));
     beforeEach(inject(function($injector) {
-        //
-        //    $rootScope = $injector.get('$rootScope');
-        $controllers = $injector.get('$controller');
+        var $controllers = $injector.get('$controller');
         $httpBackend = $injector.get('$httpBackend');
         $http = $injector.get('$http');
-        //    $scope = $rootScope.$new();
-        //
+
+        //scope of tested controller
+        $scope = {};
+
+        // tested controller
+        controller = $controllers('mainCtrl', {$scope: $scope, $http: $http});
     }));
 
     afterEach(function() {
@@ -18,6 +20,7 @@ describe('main-controller-spec', function() {
 
 
     it('should send sign-up request to server', function() {
+
         // GIVEN sign-up user data in scope
         var signUpUser = {
             name: 'User Name',
@@ -25,16 +28,13 @@ describe('main-controller-spec', function() {
             password: 'securePassword',
             lang: 'en'
         };
-        var scope = {
-            user: signUpUser
-        };
+        $scope.user = signUpUser;
 
-        //// AND server response for sign-up request
+        // AND server response for sign-up request
         $httpBackend.when('POST', 'http://localhost:8085/api/sign-up').respond({});
 
         // WHEN push sign-up button
-        var controller = $controllers('mainCtrl', {$scope: scope, $http: $http});
-        scope.signUpUser();
+        $scope.signUpUser();
 
         // THEN send sign-up http request
         $httpBackend.expectPOST('http://localhost:8085/api/sign-up', signUpUser);

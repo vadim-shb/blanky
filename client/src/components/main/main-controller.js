@@ -4,6 +4,10 @@ angular.module('webClient').controller('mainCtrl', ['$scope', '$http', function(
 
     var signUpUrl = 'http://localhost:8085/api/sign-up';
 
+    $scope.user = {
+        lang: 'en'
+    };
+
     $scope.signUpUser = function() {
         var newUser = $scope.user;
 
