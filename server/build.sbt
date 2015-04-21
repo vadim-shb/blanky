@@ -35,7 +35,6 @@ libraryDependencies ++= Seq(
     "com.typesafe.akka"     %   ("akka-testkit"   + scV)        % akkaV                 % "test",
     "io.spray"              %   ("spray-testkit"  + scV)        % sprayV                % "test",
     "org.scalatest"         %   ("scalatest"      + scV)        % scalaTestV            % "test",
-    "org.scalikejdbc"       %%  "scalikejdbc-test"              % scalikejdbcV          % "test",
     "org.scalamock"         %%  "scalamock-scalatest-support"   % scalaMockV            % "test"
 )
 
