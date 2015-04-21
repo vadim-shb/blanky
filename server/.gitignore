@@ -15,5 +15,3 @@ project/plugins/project/
 #IntelliJ IDEA specific
 **/.idea
 **/*.iml
-
-**/src/main
