@@ -9,6 +9,11 @@ Template of basic application on top of
  - use **gulp dev** command to start client development environment.
  - use **gulp production** command to generate production version of client in *"productionApp"* folder.
  
+##For work with server:
+ - install SBT
+ - run **sbt** from server folder
+ - in sbt command line start **-re-start** task
+ - 
 ##IntelliJ users helpers:
  1. Use **File > New > Module from existing sources...**
    - for *"client"* directory (as Web module)
