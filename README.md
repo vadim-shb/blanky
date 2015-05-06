@@ -2,7 +2,7 @@
 
 Template of basic application on top of
  - Gulp-AngularJs-Bootstrap-Jasmine-Karma(web-client)
- - Sbt-Scala-Akka-AkkaHttp-ScalaTest-Postgres(server)
+ - Sbt-Scala-Akka-Spray-ScalaTest-Postgres(server)
 
 ##For work with client:
  - use **init.bash** script to initiate project (uncomment global packages which don't install yet).
