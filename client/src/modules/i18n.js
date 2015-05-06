@@ -30,12 +30,12 @@ var languageModule = angular.module('languageModule', []).factory('$mod_lang', f
             if (typeof langInStorage == 'undefined' || langInStorage == null) {
                 langInStorage = 'en';
             }
-            this.changeLang(langInStorage);
+            this.setLang(langInStorage);
 
         },
 
-        changeLang: function(lang) {
-            this.currentLang = languageService.langs[lang];
+        setLang: function(lang) {
+            this.currentLang = this.langs[lang];
             this.currentLangName = lang;
         },
 

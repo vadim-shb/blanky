@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('webClient').controller('signUpCtrl', ['$scope', '$http', '$mod_lang', function($scope, $http, $mod_lang) {
+angular.module('webClient').controller('SignUpCtrl', ['$scope', '$http', function($scope, $http) {
 
     var signUpUrl = 'http://localhost:8085/api/sign-up';
-
-    $scope.$L = $mod_lang.currentLang;
 
     $scope.user = {
         lang: 'en'

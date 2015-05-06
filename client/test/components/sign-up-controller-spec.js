@@ -1,5 +1,4 @@
 describe('Sign up controller', function() {
-    //var $rootScope;
     var controller, $httpBackend, $http, $scope, $mod_lang;
     beforeEach(module('webClient'));
     beforeEach(inject(function($injector) {
@@ -12,7 +11,7 @@ describe('Sign up controller', function() {
         $scope = {};
 
         // tested controller
-        controller = $controllers('signUpCtrl', {$scope: $scope, $http: $http, $mod_lang: $mod_lang});
+        controller = $controllers('SignUpCtrl', {$scope: $scope, $http: $http, $mod_lang: $mod_lang});
     }));
 
     //afterEach(function() {
@@ -41,7 +40,4 @@ describe('Sign up controller', function() {
         $httpBackend.expectPOST('http://localhost:8085/api/sign-up', signUpUser);
     });
 
-    it('should set lang to english', function() {
-        expect($scope.$L).toEqual($mod_lang.currentLang);
-    })
 });
