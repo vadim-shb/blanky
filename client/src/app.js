@@ -6,6 +6,6 @@ angular
         'languageModule'
     ])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/main', {templateUrl: 'components/main/main.html', controller: 'mainCtrl'});
-        $routeProvider.otherwise({redirectTo: '/main'});
+        $routeProvider.when('/sign-up', {templateUrl: 'components/sign-up/sign-up.html', controller: 'signUpCtrl'});
+        $routeProvider.otherwise({redirectTo: '/sign-up'});
     }]);

@@ -1,4 +1,4 @@
-describe('Main controller', function() {
+describe('Sign up controller', function() {
     //var $rootScope;
     var controller, $httpBackend, $http, $scope, $mod_lang;
     beforeEach(module('webClient'));
@@ -12,7 +12,7 @@ describe('Main controller', function() {
         $scope = {};
 
         // tested controller
-        controller = $controllers('mainCtrl', {$scope: $scope, $http: $http, $mod_lang: $mod_lang});
+        controller = $controllers('signUpCtrl', {$scope: $scope, $http: $http, $mod_lang: $mod_lang});
     }));
 
     //afterEach(function() {
