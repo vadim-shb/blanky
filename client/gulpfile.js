@@ -18,6 +18,7 @@ var karma = require('gulp-karma');
 
 var config = {
     jsSource: [
+        'src/modules/**/*.js',
         'src/app.js',
         'src/components/**/*.js'
     ],
@@ -130,11 +131,7 @@ gulp.task('dev.watch', function() {
 gulp.task('dev.browserSync.start', function() {
     browserSync({
         server: {
-            baseDir: './src/',
-            middleware: function(req, res, next) {
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                next();
-            }
+            baseDir: './src/'
         },
         port: 9090,
         https: false,

@@ -1,22 +1,23 @@
-describe('main-controller-spec', function() {
+describe('Main controller', function() {
     //var $rootScope;
-    var controller, $httpBackend, $http, $scope;
+    var controller, $httpBackend, $http, $scope, $mod_lang;
     beforeEach(module('webClient'));
     beforeEach(inject(function($injector) {
         var $controllers = $injector.get('$controller');
         $httpBackend = $injector.get('$httpBackend');
         $http = $injector.get('$http');
+        $mod_lang = $injector.get('$mod_lang');
 
         //scope of tested controller
         $scope = {};
 
         // tested controller
-        controller = $controllers('mainCtrl', {$scope: $scope, $http: $http});
+        controller = $controllers('mainCtrl', {$scope: $scope, $http: $http, $mod_lang: $mod_lang});
     }));
 
-    afterEach(function() {
-        $httpBackend.flush();
-    });
+    //afterEach(function() {
+    //    $httpBackend.flush();
+    //});
 
 
     it('should send sign-up request to server', function() {
@@ -38,5 +39,9 @@ describe('main-controller-spec', function() {
 
         // THEN send sign-up http request
         $httpBackend.expectPOST('http://localhost:8085/api/sign-up', signUpUser);
+    });
+
+    it('should set lang to english', function() {
+        expect($scope.$L).toEqual($mod_lang.currentLang);
     })
 });

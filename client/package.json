@@ -25,6 +25,7 @@
     "karma-chrome-launcher": "^0.1.7",
     "karma-coverage": "^0.2.7",
     "karma-firefox-launcher": "^0.1.4",
-    "karma-jasmine": "^0.3.5"
+    "karma-jasmine": "^0.3.5",
+    "karma-jasmine-matchers": "^2.0.0-beta1"
   }
 }

@@ -2,7 +2,8 @@
 
 angular
     .module('webClient', [
-        'ngRoute'
+        'ngRoute',
+        'languageModule'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/main', {templateUrl: 'components/main/main.html', controller: 'mainCtrl'});
