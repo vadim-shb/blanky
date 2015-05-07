@@ -12,7 +12,7 @@ Template of basic application on top of
 ##For work with server:
  - install SBT
  - run **sbt** from server folder
- - in sbt command line start **-re-start** task
+ - in sbt command line start **re-start** task
 
 ##IntelliJ users helpers:
  1. Use **File > New > Module from existing sources...**
