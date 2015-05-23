@@ -20,7 +20,8 @@ var config = {
     jsSource: [
         'src/modules/**/*.js',
         'src/app.js',
-        'src/components/**/*.js'
+        'src/page-blocks/**/*.js',
+        'src/pages/**/*.js'
     ],
     cssSource: [
         'src/css/**/*.css'
@@ -203,9 +204,9 @@ gulp.task('production.index2pack', function() {
 });
 
 gulp.task('production.html2pack', function() {
-    return gulp.src('src/components/**/*.html')
+    return gulp.src('src/page-blocks/**/*.html')
         .pipe(minifyHTML())
-        .pipe(gulp.dest('productionApp/components'));
+        .pipe(gulp.dest('productionApp/page-blocks'));
 });
 
 gulp.task('production.clean', function(callback) {
