@@ -3,7 +3,8 @@
 angular
     .module('webClient', [
         'ngRoute',
-        'languageModule'
+        'languageModule',
+        'validationModule'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/sign-up', {templateUrl: 'pages/sign-up/sign-up.html'});

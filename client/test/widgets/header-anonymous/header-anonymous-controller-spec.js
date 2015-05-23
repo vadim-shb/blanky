@@ -14,11 +14,11 @@ describe('Header anonymous controller', function() {
     }));
 
     it('should fill languages list in scope', function() {
-        var expectedLanguaes = [
+        var expectedLanguages = [
             {value: 'ru', name: 'Русский'},
             {value: 'en', name: 'English'}
         ];
-        expect($scope.languages).toEqual(expectedLanguaes);
+        expect($scope.languages).toEqual(expectedLanguages);
     });
 
     it('should change language if selected new one', function() {

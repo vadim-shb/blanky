@@ -20,7 +20,8 @@ var config = {
     jsSource: [
         'src/modules/**/*.js',
         'src/app.js',
-        'src/page-blocks/**/*.js',
+        'src/utils/**/*.js',
+        'src/widgets/**/*.js',
         'src/pages/**/*.js'
     ],
     cssSource: [
@@ -161,7 +162,7 @@ gulp.task('dev.startTestEnvironment', function() {
         });
 });
 
-gulp.task('dev', gulp.series('dev.libs2sources', 'dev.sources2index', gulp.parallel('dev.browserSync.start', 'dev.startTestEnvironment', 'dev.watch')));
+gulp.task('dev', gulp.series('dev.libs2sources', 'dev.sources2index', gulp.parallel('dev.browserSync.start', /*'dev.startTestEnvironment',*/ 'dev.watch')));
 
 //==================================== production environment ===================================
 
@@ -204,9 +205,9 @@ gulp.task('production.index2pack', function() {
 });
 
 gulp.task('production.html2pack', function() {
-    return gulp.src('src/page-blocks/**/*.html')
+    return gulp.src('src/widgets/**/*.html')
         .pipe(minifyHTML())
-        .pipe(gulp.dest('productionApp/page-blocks'));
+        .pipe(gulp.dest('productionApp/widgets'));
 });
 
 gulp.task('production.clean', function(callback) {
