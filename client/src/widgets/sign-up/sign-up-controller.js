@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webClient').controller('SignUpCtrl', ['$rootScope', '$scope', '$http', 'isValid', function($rootScope, $scope, $http, isValid) {
+angular.module('webClient').controller('SignUpCtrl', ['$rootScope', '$scope', '$http', '$location', 'isValid', function($rootScope, $scope, $http, $location, isValid) {
 
     var signUpUrl = 'http://localhost:8085/api/sign-up';
 
@@ -24,7 +24,9 @@ angular.module('webClient').controller('SignUpCtrl', ['$rootScope', '$scope', '$
 
             $http.post(signUpUrl, newUser).
                 success(function(response) {
-                    console.log('All OK')
+                    localStorage.setItem('user', JSON.stringify(response));
+                    //localStorage.setItem('authToken', response.authToken);
+                    $location.path('/main');
                 }).
                 error(function(response) {
                     console.log('Error')

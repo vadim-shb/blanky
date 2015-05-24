@@ -13,7 +13,10 @@ var languageModule = angular.module('languageModule', []).factory('$mod_lang', f
                 msg_emailShouldBeFilledIn: 'E-mail должен быть заполнен',
                 msg_invalidEmail: 'Не верный e-mail',
                 msg_nameOfUserShouldBeFilledIn: 'Имя пользователя должно быть заполнено',
-                msg_passwordShouldBeFilledIn: 'Пароль должен быть заполнен'
+                msg_passwordShouldBeFilledIn: 'Пароль должен быть заполнен',
+
+                // header
+                signOut: 'Выход'
             },
 
             en: {
@@ -28,7 +31,10 @@ var languageModule = angular.module('languageModule', []).factory('$mod_lang', f
                 msg_emailShouldBeFilledIn: 'Email should be filled in',
                 msg_invalidEmail: 'Invalid e-mail',
                 msg_nameOfUserShouldBeFilledIn: 'Name of user should be filled in',
-                msg_passwordShouldBeFilledIn: 'Password should be filled in'
+                msg_passwordShouldBeFilledIn: 'Password should be filled in',
+
+                // header
+                signOut: 'Sign Out'
             }
         },
 

@@ -2,6 +2,10 @@
 
 angular.module('webClient').controller('HeaderAnonymousCtrl', ['$rootScope', '$scope', '$mod_lang', function($rootScope, $scope, $mod_lang) {
 
+    var init = function() {
+        fillLangBox();
+    };
+
     var fillLangBox = function() {
         $scope.languages = [];
         for (var i in $mod_lang.langs) {
@@ -12,10 +16,6 @@ angular.module('webClient').controller('HeaderAnonymousCtrl', ['$rootScope', '$s
         }
     };
 
-    var componentInit = function() {
-        fillLangBox();
-    };
-
     $scope.changeLang = function(lang) {
         if (typeof $mod_lang.langs[lang] != 'undefined') {
             $mod_lang.setLang(lang);
@@ -24,5 +24,5 @@ angular.module('webClient').controller('HeaderAnonymousCtrl', ['$rootScope', '$s
         }
     };
 
-    componentInit();
+    init();
 }]);
