@@ -6,7 +6,6 @@ angular.module('webClient').controller('SignUpCtrl', ['$rootScope', '$scope', '$
 
     $scope.user = {
         data: {
-            lang: 'en',
             name: '',
             email: '',
             password: ''
@@ -21,7 +20,7 @@ angular.module('webClient').controller('SignUpCtrl', ['$rootScope', '$scope', '$
     $scope.signUpUser = function() {
         if (validateAll()) {
             var newUser = $scope.user.data;
-
+            newUser.lang = localStorage.getItem('lang');
             $http.post(signUpUrl, newUser).
                 success(function(response) {
                     localStorage.setItem('user', JSON.stringify(response));

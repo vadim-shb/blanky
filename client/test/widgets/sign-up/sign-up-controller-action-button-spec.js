@@ -26,8 +26,7 @@ describe('Sign up controller', function() {
             data: {
                 name: 'User Name',
                 email: 'someone@example.com',
-                password: 'securePassword',
-                lang: 'en'
+                password: 'securePassword'
             },
             hasError: {
                 name: false,
@@ -39,11 +38,16 @@ describe('Sign up controller', function() {
         var savedUser = {id: 1};
         $httpBackend.when('POST', 'http://localhost:8085/api/sign-up').respond(savedUser);
 
+        // AND russian lang in local storage
+        localStorage.setItem('lang', 'ru');
+
         // WHEN push sign-up button
         $scope.signUpUser();
 
-        // THEN send sign-up http request
-        $httpBackend.expectPOST('http://localhost:8085/api/sign-up', $scope.user.data);
+        // THEN send sign-up http request with russian language in
+        var requestWithLang = angular.copy($scope.user.data);
+        requestWithLang.lang = 'ru';
+        $httpBackend.expectPOST('http://localhost:8085/api/sign-up', requestWithLang);
         $httpBackend.flush();
 
         // AND redirect to main page
@@ -82,8 +86,7 @@ describe('Sign up controller', function() {
             data: {
                 name: '',
                 email: '',
-                password: '',
-                lang: 'en'
+                password: ''
             },
             hasError: {
                 name: false,
