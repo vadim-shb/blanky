@@ -140,6 +140,7 @@ gulp.task('dev.browserSync.start', function() {
         ui: {
             port: 9091
         },
+        notify: false,
         //browser: 'google-chrome-stable'
         browser: 'firefox'
     });
