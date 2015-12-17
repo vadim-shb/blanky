@@ -1,6 +1,6 @@
 # blanky
 
-Template of basic application on top of
+Fully tested template of basic application on top of
  - Gulp-AngularJs-Bootstrap-Jasmine-Karma(web-client)
  - Sbt-Scala-Akka-Spray-ScalaTest-Flyway-SkalikeJDBC-Postgres(server)
 
